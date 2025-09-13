@@ -8,51 +8,61 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
+    /* Marmagya 10.0 Design System - Blue, Golden, White Theme */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 220 20% 15%;
 
+    /* Primary Blue Theme */
+    --primary: 220 85% 25%;
+    --primary-light: 220 80% 35%;
+    --primary-dark: 220 90% 15%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Golden Highlights */
+    --golden: 45 100% 55%;
+    --golden-light: 45 100% 65%;
+    --golden-dark: 45 100% 45%;
+    --golden-foreground: 220 20% 15%;
+
+    /* Secondary Colors */
+    --secondary: 220 15% 96%;
+    --secondary-foreground: 220 20% 15%;
+
+    /* Card and Surface Colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 20% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Muted Colors */
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Accent Colors */
+    --accent: 220 15% 96%;
+    --accent-foreground: 220 20% 15%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Border and Input */
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 220 85% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 85% 25%), hsl(220 80% 35%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 85% 25%) 0%, hsl(220 80% 35%) 50%, hsl(45 100% 55%) 100%);
+    --gradient-golden: linear-gradient(135deg, hsl(45 100% 55%), hsl(45 100% 65%));
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(220 85% 25% / 0.2);
+    --shadow-golden: 0 8px 25px -8px hsl(45 100% 55% / 0.3);
+    --shadow-soft: 0 4px 15px -5px hsl(220 20% 15% / 0.1);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.75rem;
   }
 
   .dark {
@@ -101,5 +111,75 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    scroll-behavior: smooth;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Button Variant */
+  .btn-hero {
+    @apply bg-gradient-to-r from-[hsl(var(--golden))] to-[hsl(var(--golden-light))] 
+           text-[hsl(var(--golden-foreground))] font-semibold px-8 py-3 rounded-full
+           shadow-[var(--shadow-golden)] hover:shadow-lg hover:scale-105 
+           transition-[var(--transition-smooth)] border border-[hsl(var(--golden-dark))]
+           hover:from-[hsl(var(--golden-dark))] hover:to-[hsl(var(--golden))];
+  }
+
+  /* Primary Button Variant */
+  .btn-primary {
+    @apply bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] 
+           font-semibold px-6 py-3 rounded-lg shadow-[var(--shadow-elegant)]
+           hover:bg-[hsl(var(--primary-light))] hover:shadow-lg hover:scale-105
+           transition-[var(--transition-smooth)];
+  }
+
+  /* Card Hover Effect */
+  .card-hover {
+    @apply bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-xl
+           shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-elegant)]
+           hover:scale-105 transition-[var(--transition-smooth)] p-6;
+  }
+
+  /* Golden Accent Text */
+  .text-golden {
+    @apply text-[hsl(var(--golden))] font-semibold;
+  }
+
+  /* Gradient Background */
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  /* Smooth Scroll Animation */
+  .fade-in {
+    @apply opacity-0 translate-y-10 transition-all duration-700 ease-out;
+  }
+
+  .fade-in.in-view {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Navigation Link Hover */
+  .nav-link {
+    @apply relative text-[hsl(var(--primary-foreground))] hover:text-[hsl(var(--golden))]
+           transition-[var(--transition-smooth)] font-medium;
+  }
+
+  .nav-link::after {
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-[hsl(var(--golden))]
+           transition-all duration-300 ease-out;
+    content: '';
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
   }
 }
