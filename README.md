@@ -1,73 +1,86 @@
-# Welcome to your Lovable project
+# Marmagya X Conclave Hub
 
-## Project info
+A modern conference website built with React, TypeScript, and Tailwind CSS.
 
-**URL**: https://lovable.dev/projects/da6bb9d5-1475-4db3-a895-b4633e285e99
+## Project Overview
 
-## How can I edit this code?
+This is a conference website for Marmagya X Conclave featuring:
+- Speaker profiles and panels
+- Event agenda and schedule
+- Interactive games and activities
+- Gallery and media
+- Contact information
 
-There are several ways of editing your application.
+## Technologies Used
 
-**Use Lovable**
+- **Vite** - Build tool and development server
+- **TypeScript** - Type-safe JavaScript
+- **React** - UI library
+- **shadcn-ui** - Component library
+- **Tailwind CSS** - Utility-first CSS framework
+- **Supabase** - Backend as a Service (Database & Storage)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/da6bb9d5-1475-4db3-a895-b4633e285e99) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js (v18 or higher)
+- npm or yarn
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```bash
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd marmagya-x-conclave-hub
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Available Scripts
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-**Use GitHub Codespaces**
+## Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+src/
+├── components/          # React components
+│   ├── ui/             # shadcn-ui components
+│   └── ...             # Feature components
+├── pages/              # Page components
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+├── integrations/       # External service integrations
+│   └── supabase/       # Supabase configuration
+└── assets/             # Static assets
+```
 
-## What technologies are used for this project?
+## Features
 
-This project is built with:
+- **Responsive Design** - Mobile-first approach
+- **Modern UI** - Clean and professional design
+- **Type Safety** - Full TypeScript support
+- **Database Integration** - Supabase backend
+- **Image Storage** - Supabase Storage for media
+- **Interactive Elements** - Games and animations
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Contributing
 
-## How can I deploy this project?
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-Simply open [Lovable](https://lovable.dev/projects/da6bb9d5-1475-4db3-a895-b4633e285e99) and click on Share -> Publish.
+## License
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is private and proprietary.

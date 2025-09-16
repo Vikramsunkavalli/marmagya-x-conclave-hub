@@ -1,53 +1,79 @@
+import { useEffect } from 'react';
+
 const About = () => {
+  useEffect(() => {
+    // Add scroll animation observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      }
+    );
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+    fadeElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      fadeElements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
   return (
-    <section id="about" className="py-20 bg-[hsl(var(--secondary))]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-[hsl(var(--primary))] mb-6">
-            About <span className="text-golden">Marmagya</span>
-          </h2>
-          <div className="w-24 h-1 bg-[hsl(var(--golden))] mx-auto mb-8"></div>
-        </div>
+    <section id="about" className="py-20 bg-[hsl(var(--background))]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16 fade-in">
+              <h2 className="text-4xl sm:text-5xl font-bold text-[hsl(var(--primary))] mb-6">
+                About <span className="text-golden">Marmagya</span>
+              </h2>
+              <div className="w-24 h-1 bg-[hsl(var(--golden))] mx-auto mb-8"></div>
+              <p className="text-lg text-[hsl(var(--muted-foreground))] max-w-3xl mx-auto">
+                Marmagya 10.0 is a premier business conclave bringing together industry leaders, 
+                entrepreneurs, and students for a day of learning, networking, and innovation.
+              </p>
+            </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="fade-in">
-            <h3 className="text-2xl font-semibold text-[hsl(var(--primary))] mb-6">
-              A Decade of Excellence
-            </h3>
-            <p className="text-lg text-[hsl(var(--muted-foreground))] mb-6 leading-relaxed">
-              Marmagya, the flagship business conclave of IIM Sambalpur, has been a beacon of 
-              intellectual discourse and business innovation for over a decade. Our annual gathering 
-              brings together industry leaders, visionary entrepreneurs, and brilliant minds to explore 
-              the evolving landscape of modern business.
-            </p>
-            <p className="text-lg text-[hsl(var(--muted-foreground))] leading-relaxed">
-              From humble beginnings to becoming one of the most anticipated business events in 
-              Eastern India, Marmagya continues to foster meaningful connections and drive 
-              transformative conversations that shape the future of business.
-            </p>
-          </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              <div className="text-center fade-in">
+                <div className="w-16 h-16 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🎯</span>
+                </div>
+                <h3 className="text-xl font-semibold text-[hsl(var(--primary))] mb-2">Vision</h3>
+                <p className="text-[hsl(var(--muted-foreground))]">
+                  To create a platform where business leaders and students can connect, 
+                  learn, and grow together.
+                </p>
+              </div>
 
-          <div className="grid grid-cols-2 gap-6">
-            <div className="card-hover text-center">
-              <div className="text-3xl font-bold text-golden mb-2">10+</div>
-              <p className="text-[hsl(var(--muted-foreground))]">Years of Legacy</p>
-            </div>
-            <div className="card-hover text-center">
-              <div className="text-3xl font-bold text-golden mb-2">50+</div>
-              <p className="text-[hsl(var(--muted-foreground))]">Industry Leaders</p>
-            </div>
-            <div className="card-hover text-center">
-              <div className="text-3xl font-bold text-golden mb-2">2000+</div>
-              <p className="text-[hsl(var(--muted-foreground))]">Participants</p>
-            </div>
-            <div className="card-hover text-center">
-              <div className="text-3xl font-bold text-golden mb-2">100+</div>
-              <p className="text-[hsl(var(--muted-foreground))]">Companies</p>
+              <div className="text-center fade-in">
+                <div className="w-16 h-16 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🚀</span>
+                </div>
+                <h3 className="text-xl font-semibold text-[hsl(var(--primary))] mb-2">Mission</h3>
+                <p className="text-[hsl(var(--muted-foreground))]">
+                  To foster innovation, entrepreneurship, and knowledge sharing 
+                  among the business community.
+                </p>
+              </div>
+
+              <div className="text-center fade-in">
+                <div className="w-16 h-16 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">💡</span>
+                </div>
+                <h3 className="text-xl font-semibold text-[hsl(var(--primary))] mb-2">Values</h3>
+                <p className="text-[hsl(var(--muted-foreground))]">
+                  Innovation, collaboration, and excellence in everything we do.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
   );
 };
 

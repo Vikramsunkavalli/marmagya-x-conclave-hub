@@ -7,14 +7,235 @@ export type Json =
   | Json[]
 
 export type Database = {
-  // Allows to automatically instantiate createClient with right options
-  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
-  __InternalSupabase: {
-    PostgrestVersion: "13.0.5"
-  }
   public: {
+    Functions: {
+      create_admin_session: {
+        Args: {
+          user_email: string
+          user_password: string
+        }
+        Returns: {
+          session_token: string
+          expires_at: string
+        }[]
+      }
+      validate_admin_session: {
+        Args: {
+          token: string
+        }
+        Returns: {
+          user_id: string
+          email: string
+          name: string
+        }[]
+      }
+      cleanup_expired_sessions: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
+    }
     Tables: {
-      [_ in never]: never
+      admin_users: {
+        Row: {
+          id: string
+          email: string
+          name: string
+          role: string
+          is_active: boolean
+          created_at: string
+          updated_at: string
+          last_login: string | null
+        }
+        Insert: {
+          id: string
+          email: string
+          name: string
+          role?: string
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+          last_login?: string | null
+        }
+        Update: {
+          id?: string
+          email?: string
+          name?: string
+          role?: string
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+          last_login?: string | null
+        }
+      }
+      speakers: {
+        Row: {
+          id: string
+          name: string
+          title: string
+          bio: string | null
+          image_url: string | null
+          speaker_type: 'keynote' | 'panel'
+          panel_title: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          title: string
+          bio?: string | null
+          image_url?: string | null
+          speaker_type?: 'keynote' | 'panel'
+          panel_title?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          title?: string
+          bio?: string | null
+          image_url?: string | null
+          speaker_type?: 'keynote' | 'panel'
+          panel_title?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      events: {
+        Row: {
+          id: string
+          title: string
+          description: string | null
+          start_time: string
+          end_time: string
+          location: string | null
+          event_type: 'keynote' | 'panel' | 'break' | 'session' | 'networking'
+          speaker_ids: string[] | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          description?: string | null
+          start_time: string
+          end_time: string
+          location?: string | null
+          event_type?: 'keynote' | 'panel' | 'break' | 'session' | 'networking'
+          speaker_ids?: string[] | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          description?: string | null
+          start_time?: string
+          end_time?: string
+          location?: string | null
+          event_type?: 'keynote' | 'panel' | 'break' | 'session' | 'networking'
+          speaker_ids?: string[] | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      sponsors: {
+        Row: {
+          id: string
+          name: string
+          logo_url: string | null
+          website_url: string | null
+          sponsor_level: 'platinum' | 'gold' | 'silver' | 'bronze'
+          description: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          logo_url?: string | null
+          website_url?: string | null
+          sponsor_level?: 'platinum' | 'gold' | 'silver' | 'bronze'
+          description?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          logo_url?: string | null
+          website_url?: string | null
+          sponsor_level?: 'platinum' | 'gold' | 'silver' | 'bronze'
+          description?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      gallery: {
+        Row: {
+          id: string
+          title: string
+          description: string | null
+          image_url: string
+          image_type: 'photo' | 'video'
+          event_id: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          description?: string | null
+          image_url: string
+          image_type?: 'photo' | 'video'
+          event_id?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          description?: string | null
+          image_url?: string
+          image_type?: 'photo' | 'video'
+          event_id?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      contact_messages: {
+        Row: {
+          id: string
+          name: string
+          email: string
+          subject: string | null
+          message: string
+          status: 'new' | 'read' | 'replied'
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          email: string
+          subject?: string | null
+          message: string
+          status?: 'new' | 'read' | 'replied'
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          email?: string
+          subject?: string | null
+          message?: string
+          status?: 'new' | 'read' | 'replied'
+          created_at?: string
+          updated_at?: string
+        }
+      }
     }
     Views: {
       [_ in never]: never

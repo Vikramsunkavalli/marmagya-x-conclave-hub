@@ -33,15 +33,6 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="btn-hero">
-              Register Now
-            </button>
-            <button className="btn-primary">
-              View Agenda
-            </button>
-          </div>
         </div>
 
         {/* Decorative Elements */}
