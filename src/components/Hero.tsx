@@ -28,7 +28,7 @@ const Hero = () => {
           <div className="mb-12">
             <div className="inline-block bg-[hsl(var(--card))] bg-opacity-20 backdrop-blur-sm rounded-lg px-6 py-4 border border-[hsl(var(--golden))] border-opacity-30">
               <p className="text-[hsl(var(--golden))] font-semibold text-lg sm:text-xl">
-                March 15-16, 2024 | IIM Sambalpur
+                October 25-26, 2025 | IIM Sambalpur
               </p>
             </div>
           </div>

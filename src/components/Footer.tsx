@@ -4,30 +4,24 @@ const Footer = () => {
   const socialLinks = [
     { icon: Facebook, href: '#', label: 'Facebook' },
     { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/industry-relations-committee-iim-sambalpur/', label: 'LinkedIn' },
+    { icon: Instagram, href: 'https://www.instagram.com/industryrelations_iimsbp?igsh=MW1oNjJpNzV6dHgyag==', label: 'Instagram' },
     { icon: Youtube, href: '#', label: 'YouTube' }
   ];
 
   const quickLinks = [
-    { name: 'Registration', href: '#' },
-    { name: 'Agenda', href: '#agenda' },
-    { name: 'Speakers', href: '#speakers' },
-    { name: 'Sponsors', href: '#sponsors' }
+    { name: 'Registration', href: '/contact' },
+    { name: 'Agenda', href: '/agenda' },
+    { name: 'Speakers', href: '/speakers' },
+    { name: 'Sponsors', href: '/sponsors' }
   ];
 
-  const eventInfo = [
-    { name: 'About IIM Sambalpur', href: '#' },
-    { name: 'Previous Events', href: '#' },
-    { name: 'Media Coverage', href: '#' },
-    { name: 'Contact Us', href: '#contact' }
-  ];
 
   return (
     <footer className="bg-[hsl(var(--primary-dark))] text-[hsl(var(--primary-foreground))] pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {/* Event Info */}
           <div>
             <h3 className="text-2xl font-bold mb-4">
@@ -38,7 +32,7 @@ const Footer = () => {
               industry leaders and visionaries to shape the future of business.
             </p>
             <div className="text-sm text-[hsl(var(--primary-foreground))] opacity-70">
-              <p className="mb-1">📅 March 15-16, 2024</p>
+              <p className="mb-1">📅 October 25-26, 2025</p>
               <p>📍 IIM Sambalpur, Odisha</p>
             </div>
           </div>
@@ -60,22 +54,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Event Information */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4 text-golden">Event Info</h4>
-            <ul className="space-y-3">
-              {eventInfo.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-[hsl(var(--primary-foreground))] opacity-80 hover:opacity-100 hover:text-golden transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
 
           {/* Social Media & Newsletter */}
           <div>

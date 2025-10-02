@@ -38,77 +38,199 @@ const Agenda = () => {
               </p>
             </div>
 
-            <div className="space-y-8">
-              <div className="bg-white rounded-lg shadow-md p-6 fade-in">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
-                    <span className="text-white font-bold">9:00</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-[hsl(var(--primary))]">Registration & Welcome</h3>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Day 1 */}
+              <div className="fade-in">
+                <div className="mb-6 bg-gradient-to-r from-[hsl(var(--golden))] to-yellow-500 rounded-lg p-6 text-white">
+                  <h3 className="text-3xl font-bold mb-2">Day 1</h3>
+                  <p className="text-lg opacity-90">March 15, 2024</p>
+                  <p className="text-sm opacity-80 mt-1">Leadership & Innovation Focus</p>
                 </div>
-                <p className="text-[hsl(var(--muted-foreground))] ml-16">
-                  Check-in, networking, and welcome refreshments
-                </p>
+                
+                <div className="space-y-4">
+                  {/* Registration */}
+                  <div className="bg-white rounded-lg p-4 shadow-sm border">
+                    <div className="flex items-center">
+                      <span className="text-lg font-bold text-[hsl(var(--primary))] mr-4">09:00 AM</span>
+                      <div>
+                        <h4 className="font-semibold text-[hsl(var(--primary))]">Registration & Welcome Coffee</h4>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Opening Keynote */}
+                  <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg p-5 shadow-lg">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-bold text-white bg-black bg-opacity-20 px-2 py-1 rounded">10:00 AM</span>
+                      <span className="text-xs text-white bg-black bg-opacity-20 px-2 py-1 rounded">KEYNOTE</span>
+                    </div>
+                    <h4 className="font-bold text-white mb-2 text-lg">Opening Keynote: The Future of Business Leadership</h4>
+                    <p className="text-sm text-white opacity-90 mb-1">Dr. Rajesh Sharma, CEO TechForward Inc.</p>
+                    <p className="text-xs text-white opacity-75">Exploring leadership paradigms in the digital age</p>
+                  </div>
+
+                  {/* Panel 1 */}
+                  <div className="bg-gradient-to-br from-blue-800 to-blue-900 rounded-lg p-5 shadow-lg text-white">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm font-bold bg-white bg-opacity-20 px-2 py-1 rounded">11:30 AM</span>
+                      <button className="text-xs bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-1 rounded-full font-medium transition-colors">Register</button>
+                    </div>
+                    <h4 className="font-semibold mb-2 text-lg">Panel 1: Digital Transformation in Traditional Industries</h4>
+                    <p className="text-sm text-blue-200 mb-2">Bridging the Old and New</p>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Technology</span>
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Innovation</span>
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Leadership</span>
+                    </div>
+                  </div>
+
+                  {/* Lunch */}
+                  <div className="bg-white rounded-lg p-4 shadow-sm border">
+                    <div className="flex items-center">
+                      <span className="text-lg font-bold text-[hsl(var(--primary))] mr-4">01:00 PM</span>
+                      <div>
+                        <h4 className="font-semibold text-[hsl(var(--primary))]">Lunch & Networking</h4>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Panel 2 */}
+                  <div className="bg-gradient-to-br from-blue-800 to-blue-900 rounded-lg p-5 shadow-lg text-white">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm font-bold bg-white bg-opacity-20 px-2 py-1 rounded">02:30 PM</span>
+                      <button className="text-xs bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-1 rounded-full font-medium transition-colors">Register</button>
+                    </div>
+                    <h4 className="font-semibold mb-2 text-lg">Panel 2: Sustainable Business Practices</h4>
+                    <p className="text-sm text-blue-200 mb-2">Profit with Purpose</p>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Sustainability</span>
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Business</span>
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Purpose</span>
+                    </div>
+                  </div>
+
+                  {/* Panel 3 */}
+                  <div className="bg-gradient-to-br from-blue-800 to-blue-900 rounded-lg p-5 shadow-lg text-white">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm font-bold bg-white bg-opacity-20 px-2 py-1 rounded">04:00 PM</span>
+                      <button className="text-xs bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-1 rounded-full font-medium transition-colors">Register</button>
+                    </div>
+                    <h4 className="font-semibold mb-2 text-lg">Panel 3: The Rise of Entrepreneurship</h4>
+                    <p className="text-sm text-blue-200 mb-2">From Idea to IPO</p>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Entrepreneurship</span>
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Startups</span>
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Innovation</span>
+                    </div>
+                  </div>
+
+                  {/* Evening Gala */}
+                  <div className="bg-white rounded-lg p-4 shadow-sm border">
+                    <div className="flex items-center">
+                      <span className="text-lg font-bold text-[hsl(var(--primary))] mr-4">06:00 PM</span>
+                      <div>
+                        <h4 className="font-semibold text-[hsl(var(--primary))]">Evening Gala & Awards Ceremony</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md p-6 fade-in">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
-                    <span className="text-white font-bold">10:00</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-[hsl(var(--primary))]">Keynote Address</h3>
+              {/* Day 2 */}
+              <div className="fade-in">
+                <div className="mb-6 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg p-6 text-white">
+                  <h3 className="text-3xl font-bold mb-2">Day 2</h3>
+                  <p className="text-lg opacity-90">March 16, 2024</p>
+                  <p className="text-sm opacity-80 mt-1">Strategy & Future Focus</p>
                 </div>
-                <p className="text-[hsl(var(--muted-foreground))] ml-16">
-                  Inspiring keynote from industry leaders
-                </p>
-              </div>
+                
+                <div className="space-y-4">
+                  {/* Morning Coffee */}
+                  <div className="bg-white rounded-lg p-4 shadow-sm border">
+                    <div className="flex items-center">
+                      <span className="text-lg font-bold text-[hsl(var(--primary))] mr-4">09:30 AM</span>
+                      <div>
+                        <h4 className="font-semibold text-[hsl(var(--primary))]">Morning Coffee & Networking</h4>
+                      </div>
+                    </div>
+                  </div>
 
-              <div className="bg-white rounded-lg shadow-md p-6 fade-in">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
-                    <span className="text-white font-bold">11:00</span>
+                  {/* Keynote */}
+                  <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg p-5 shadow-lg">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-bold text-white bg-black bg-opacity-20 px-2 py-1 rounded">10:30 AM</span>
+                      <span className="text-xs text-white bg-black bg-opacity-20 px-2 py-1 rounded">KEYNOTE</span>
+                    </div>
+                    <h4 className="font-bold text-white mb-2 text-lg">Keynote: AI and the Future of Work</h4>
+                    <p className="text-sm text-white opacity-90 mb-1">Ms. Priya Nair, Chief AI Officer, Global Tech</p>
+                    <p className="text-xs text-white opacity-75">Transforming workplaces through artificial intelligence</p>
                   </div>
-                  <h3 className="text-xl font-semibold text-[hsl(var(--primary))]">Panel Discussion</h3>
-                </div>
-                <p className="text-[hsl(var(--muted-foreground))] ml-16">
-                  Interactive panel on current industry trends
-                </p>
-              </div>
 
-              <div className="bg-white rounded-lg shadow-md p-6 fade-in">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
-                    <span className="text-white font-bold">12:30</span>
+                  {/* Panel 4 */}
+                  <div className="bg-gradient-to-br from-blue-800 to-blue-900 rounded-lg p-5 shadow-lg text-white">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm font-bold bg-white bg-opacity-20 px-2 py-1 rounded">12:00 PM</span>
+                      <button className="text-xs bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-1 rounded-full font-medium transition-colors">Register</button>
+                    </div>
+                    <h4 className="font-semibold mb-2 text-lg">Panel 4: Financial Markets & Investment Trends</h4>
+                    <p className="text-sm text-blue-200 mb-2">Navigating Market Volatility</p>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Finance</span>
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Investment</span>
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Markets</span>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-[hsl(var(--primary))]">Lunch & Networking</h3>
-                </div>
-                <p className="text-[hsl(var(--muted-foreground))] ml-16">
-                  Networking lunch with fellow attendees
-                </p>
-              </div>
 
-              <div className="bg-white rounded-lg shadow-md p-6 fade-in">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
-                    <span className="text-white font-bold">14:00</span>
+                  {/* Lunch Break */}
+                  <div className="bg-white rounded-lg p-4 shadow-sm border">
+                    <div className="flex items-center">
+                      <span className="text-lg font-bold text-[hsl(var(--primary))] mr-4">01:30 PM</span>
+                      <div>
+                        <h4 className="font-semibold text-[hsl(var(--primary))]">Lunch Break</h4>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-[hsl(var(--primary))]">Workshops</h3>
-                </div>
-                <p className="text-[hsl(var(--muted-foreground))] ml-16">
-                  Hands-on workshops and skill-building sessions
-                </p>
-              </div>
 
-              <div className="bg-white rounded-lg shadow-md p-6 fade-in">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
-                    <span className="text-white font-bold">16:00</span>
+                  {/* Panel 5 */}
+                  <div className="bg-gradient-to-br from-blue-800 to-blue-900 rounded-lg p-5 shadow-lg text-white">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm font-bold bg-white bg-opacity-20 px-2 py-1 rounded">02:45 PM</span>
+                      <button className="text-xs bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-1 rounded-full font-medium transition-colors">Register</button>
+                    </div>
+                    <h4 className="font-semibold mb-2 text-lg">Panel 5: Healthcare Innovation</h4>
+                    <p className="text-sm text-blue-200 mb-2">Technology Meets Wellness</p>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Healthcare</span>
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Technology</span>
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Wellness</span>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-[hsl(var(--primary))]">Closing Ceremony</h3>
+
+                  {/* Panel 6 */}
+                  <div className="bg-gradient-to-br from-blue-800 to-blue-900 rounded-lg p-5 shadow-lg text-white">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm font-bold bg-white bg-opacity-20 px-2 py-1 rounded">04:15 PM</span>
+                      <button className="text-xs bg-yellow-500 hover:bg-yellow-600 text-black px-3 py-1 rounded-full font-medium transition-colors">Register</button>
+                    </div>
+                    <h4 className="font-semibold mb-2 text-lg">Panel 6: Global Supply Chain Resilience</h4>
+                    <p className="text-sm text-blue-200 mb-2">Building Robust Networks</p>
+                    <div className="flex flex-wrap gap-1">
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Supply Chain</span>
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Resilience</span>
+                      <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded">Networks</span>
+                    </div>
+                  </div>
+
+                  {/* Closing Ceremony */}
+                  <div className="bg-white rounded-lg p-4 shadow-sm border">
+                    <div className="flex items-center">
+                      <span className="text-lg font-bold text-[hsl(var(--primary))] mr-4">05:45 PM</span>
+                      <div>
+                        <h4 className="font-semibold text-[hsl(var(--primary))]">Closing Ceremony & Way Forward</h4>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-[hsl(var(--muted-foreground))] ml-16">
-                  Awards, recognition, and closing remarks
-                </p>
               </div>
             </div>
           </div>
