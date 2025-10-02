@@ -1,14 +1,5 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
-import { toast } from 'sonner';
-import { z } from 'zod';
-
-const contactSchema = z.object({
-  name: z.string().trim().min(1, 'Name is required').max(100, 'Name must be less than 100 characters'),
-  email: z.string().trim().email('Invalid email address').max(255, 'Email must be less than 255 characters'),
-  subject: z.string().trim().max(200, 'Subject must be less than 200 characters').optional(),
-  message: z.string().trim().min(10, 'Message must be at least 10 characters').max(2000, 'Message must be less than 2000 characters')
-});
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +9,7 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   useEffect(() => {
     // Add scroll animation observer
@@ -43,53 +35,41 @@ const Contact = () => {
     };
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      // Validate form data
-      const validatedData = contactSchema.parse(formData);
-
-      // Insert into Supabase
-      const { error } = await supabase
-        .from('contact_messages')
-        .insert({
-          name: validatedData.name,
-          email: validatedData.email,
-          subject: validatedData.subject || null,
-          message: validatedData.message,
-          status: 'new'
-        });
-
-      if (error) throw error;
-
-      toast.success('Message sent successfully! We\'ll get back to you soon.');
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        const firstError = error.errors[0];
-        toast.error(firstError.message);
-      } else {
-        toast.error('Failed to send message. Please try again.');
-      }
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject || null,
+            message: formData.message,
+            status: 'new'
+          }
+        ]);
+
+      if (error) throw error;
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Error submitting message:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -111,63 +91,34 @@ const Contact = () => {
             <div className="space-y-4">
               <div className="flex items-center">
                 <div className="w-10 h-10 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
-                  <span className="text-white">📧</span>
-                </div>
-                <div>
-                  <p className="font-medium text-[hsl(var(--primary))]">Email</p>
-                  <p className="text-[hsl(var(--muted-foreground))]">info@marmagya.com</p>
-                </div>
-              </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="fade-in">
-                <h3 className="text-2xl font-semibold text-[hsl(var(--primary))] mb-6">Contact Information</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
-                      <span className="text-white">📍</span>
-                    </div>
-                    <div>
-                      <p className="font-medium text-[hsl(var(--primary))]">Address</p>
-                      <p className="text-[hsl(var(--muted-foreground))]">
-                        IIM Sambalpur<br />
-                        near Ghoshala, Basantpur, Odisha 768025
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
-                      <span className="text-white">📱</span>
-                    </div>
-                    <div>
-                      <p className="font-medium text-[hsl(var(--primary))]">Phone</p>
-                      <p className="text-[hsl(var(--muted-foreground))]">+91 9791087276</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
-                      <span className="text-white">📧</span>
-                    </div>
-                    <div>
-                      <p className="font-medium text-[hsl(var(--primary))]">Email</p>
-                      <p className="text-[hsl(var(--muted-foreground))]">industry@iimsambalpur.ac.in</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
                   <span className="text-white">📍</span>
                 </div>
                 <div>
                   <p className="font-medium text-[hsl(var(--primary))]">Address</p>
                   <p className="text-[hsl(var(--muted-foreground))]">
-                    123 Business Street<br />
-                    City, State 12345
+                    IIM Sambalpur<br />
+                    near Ghoshala, Basantpur, Odisha 768025
                   </p>
+                </div>
+              </div>
+
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
+                  <span className="text-white">📱</span>
+                </div>
+                <div>
+                  <p className="font-medium text-[hsl(var(--primary))]">Phone</p>
+                  <p className="text-[hsl(var(--muted-foreground))]">+91 9791087276</p>
+                </div>
+              </div>
+
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
+                  <span className="text-white">📧</span>
+                </div>
+                <div>
+                  <p className="font-medium text-[hsl(var(--primary))]">Email</p>
+                  <p className="text-[hsl(var(--muted-foreground))]">industry@iimsambalpur.ac.in</p>
                 </div>
               </div>
             </div>
@@ -175,7 +126,19 @@ const Contact = () => {
 
           <div className="fade-in">
             <h3 className="text-2xl font-semibold text-[hsl(var(--primary))] mb-6">Send us a Message</h3>
-            <form className="space-y-6" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {submitStatus === 'success' && (
+                <div className="bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded-md text-sm">
+                  Thank you! Your message has been sent successfully.
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-md text-sm">
+                  Sorry, there was an error sending your message. Please try again.
+                </div>
+              )}
+
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-[hsl(var(--primary))] mb-2">
                   Name *
