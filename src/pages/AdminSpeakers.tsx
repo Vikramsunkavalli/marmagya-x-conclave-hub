@@ -146,7 +146,7 @@ const AdminSpeakers = () => {
       name: speaker.name,
       title: speaker.title,
       bio: speaker.bio || '',
-      speaker_type: speaker.speaker_type,
+      speaker_type: speaker.speaker_type as 'keynote' | 'panel',
       panel_title: speaker.panel_title || ''
     });
     setImagePreview(speaker.image_url);

@@ -97,7 +97,7 @@ const AdminGallery = () => {
       title: item.title,
       description: item.description || '',
       image_url: item.image_url,
-      image_type: item.image_type
+      image_type: item.image_type as 'photo' | 'video'
     });
     setShowModal(true);
   };
