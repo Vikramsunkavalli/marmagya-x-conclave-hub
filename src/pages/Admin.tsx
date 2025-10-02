@@ -11,12 +11,12 @@ import {
   Home
 } from 'lucide-react';
 import { APP_CONFIG } from '@/config/constants';
-import { useAuth } from '@/contexts/SimpleAuthContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 
 const Admin = () => {
   const location = useLocation();
-  const { user, logout } = useAuth();
+  const { user, signOut } = useAuth();
   const [stats, setStats] = useState({
     speakers: 0,
     events: 0,
@@ -109,7 +109,7 @@ const Admin = () => {
                 Welcome, {user?.email}
               </span>
               <button 
-                onClick={logout}
+                onClick={signOut}
                 className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors"
               >
                 <LogOut size={20} />

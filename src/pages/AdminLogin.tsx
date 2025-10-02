@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Navigate, useLocation, Link } from 'react-router-dom';
-import { useAuth } from '@/contexts/SimpleAuthContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { ArrowLeft, Lock, Mail, Eye, EyeOff } from 'lucide-react';
 
 const AdminLogin: React.FC = () => {
-  const { login, isAuthenticated, isLoading } = useAuth();
+  const { signIn, isAuthenticated, isLoading } = useAuth();
   const location = useLocation();
   const [formData, setFormData] = useState({
     email: '',
@@ -26,12 +26,12 @@ const AdminLogin: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const result = await login(formData.email, formData.password);
+      const { error: signInError } = await signIn(formData.email, formData.password);
       
-      if (!result.success) {
-        setError(result.error || 'Login failed');
+      if (signInError) {
+        setError(signInError.message || 'Invalid email or password');
       }
-    } catch (error) {
+    } catch (err) {
       setError('An unexpected error occurred');
     } finally {
       setIsSubmitting(false);

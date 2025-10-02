@@ -13,7 +13,7 @@ import {
 import { supabase } from '@/integrations/supabase/client';
 import type { Tables } from '@/integrations/supabase/types';
 import { STORAGE_BUCKETS } from '@/config/constants';
-import { useAuth } from '@/contexts/SimpleAuthContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 type GalleryItem = Tables<'gallery'>;
 
