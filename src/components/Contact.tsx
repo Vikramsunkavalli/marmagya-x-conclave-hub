@@ -44,11 +44,14 @@ const Contact = () => {
                 <div className="space-y-4">
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
-                      <span className="text-white">📧</span>
+                      <span className="text-white">📍</span>
                     </div>
                     <div>
-                      <p className="font-medium text-[hsl(var(--primary))]">Email</p>
-                      <p className="text-[hsl(var(--muted-foreground))]">info@marmagya.com</p>
+                      <p className="font-medium text-[hsl(var(--primary))]">Address</p>
+                      <p className="text-[hsl(var(--muted-foreground))]">
+                        IIM Sambalpur<br />
+                        near Ghoshala, Basantpur, Odisha 768025
+                      </p>
                     </div>
                   </div>
 
@@ -58,20 +61,17 @@ const Contact = () => {
                     </div>
                     <div>
                       <p className="font-medium text-[hsl(var(--primary))]">Phone</p>
-                      <p className="text-[hsl(var(--muted-foreground))]">+1 (555) 123-4567</p>
+                      <p className="text-[hsl(var(--muted-foreground))]">+91 9791087276</p>
                     </div>
                   </div>
 
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-[hsl(var(--golden))] rounded-full flex items-center justify-center mr-4">
-                      <span className="text-white">📍</span>
+                      <span className="text-white">📧</span>
                     </div>
                     <div>
-                      <p className="font-medium text-[hsl(var(--primary))]">Address</p>
-                      <p className="text-[hsl(var(--muted-foreground))]">
-                        123 Business Street<br />
-                        City, State 12345
-                      </p>
+                      <p className="font-medium text-[hsl(var(--primary))]">Email</p>
+                      <p className="text-[hsl(var(--muted-foreground))]">industry@iimsambalpur.ac.in</p>
                     </div>
                   </div>
                 </div>

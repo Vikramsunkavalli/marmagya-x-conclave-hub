@@ -34,8 +34,9 @@ const About = () => {
               </h2>
               <div className="w-24 h-1 bg-[hsl(var(--golden))] mx-auto mb-8"></div>
               <p className="text-lg text-[hsl(var(--muted-foreground))] max-w-3xl mx-auto">
-                Marmagya 10.0 is a premier business conclave bringing together industry leaders, 
-                entrepreneurs, and students for a day of learning, networking, and innovation.
+                Marmagya is the annual business conclave of IIM Sambalpur, a flagship event that brings together prominent leaders, policymakers, entrepreneurs, and academicians from across the globe. This prestigious forum serves as a platform for insightful discussions on contemporary business trends, economic challenges, and future growth opportunities.
+                <br /><br />
+                Each year, Marmagya focuses on a unique theme relevant to the evolving business landscape, fostering a rich exchange of ideas and knowledge. It provides students with a unique opportunity to engage directly with industry stalwarts, gaining practical perspectives that complement their academic learning. The conclave features keynote addresses, panel discussions, and interactive sessions, making it a cornerstone of IIM Sambalpur's commitment to creating future-ready business leaders.
               </p>
             </div>
 
