@@ -12,7 +12,7 @@ import {
 import { supabase } from '@/integrations/supabase/client';
 import type { Tables } from '@/integrations/supabase/types';
 import { STORAGE_BUCKETS } from '@/config/constants';
-import { useAuth } from '@/contexts/SimpleAuthContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 type Sponsor = Tables<'sponsors'>;
 
@@ -99,7 +99,7 @@ const AdminSponsors = () => {
       name: sponsor.name,
       logo_url: sponsor.logo_url || '',
       website_url: sponsor.website_url || '',
-      sponsor_level: sponsor.sponsor_level,
+      sponsor_level: sponsor.sponsor_level as 'platinum' | 'gold' | 'silver' | 'bronze',
       description: sponsor.description || ''
     });
     setShowModal(true);

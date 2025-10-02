@@ -12,7 +12,7 @@ import {
 import { supabase } from '@/integrations/supabase/client';
 import type { Tables } from '@/integrations/supabase/types';
 import { STORAGE_BUCKETS, DEFAULT_IMAGES } from '@/config/constants';
-import { useAuth } from '@/contexts/SimpleAuthContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 type Speaker = Tables<'speakers'>;
 
@@ -146,7 +146,7 @@ const AdminSpeakers = () => {
       name: speaker.name,
       title: speaker.title,
       bio: speaker.bio || '',
-      speaker_type: speaker.speaker_type,
+      speaker_type: speaker.speaker_type as 'keynote' | 'panel',
       panel_title: speaker.panel_title || ''
     });
     setImagePreview(speaker.image_url);

@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import type { Tables, TablesInsert, TablesUpdate } from '@/integrations/supabase/types';
-import { useAuth } from '@/contexts/SimpleAuthContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 type Event = Tables<'events'>;
 
@@ -122,7 +122,7 @@ const AdminEvents = () => {
       start_time: new Date(event.start_time).toISOString().slice(0, 16),
       end_time: new Date(event.end_time).toISOString().slice(0, 16),
       location: event.location || '',
-      event_type: event.event_type,
+      event_type: event.event_type as 'keynote' | 'panel' | 'break' | 'session' | 'networking',
       speaker_ids: event.speaker_ids || []
     });
     setShowModal(true);
