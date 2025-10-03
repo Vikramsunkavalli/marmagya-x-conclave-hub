@@ -1,12 +1,9 @@
-import { Facebook, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
+import { Linkedin, Instagram } from 'lucide-react';
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
     { icon: Linkedin, href: 'https://www.linkedin.com/company/industry-relations-committee-iim-sambalpur/', label: 'LinkedIn' },
-    { icon: Instagram, href: 'https://www.instagram.com/industryrelations_iimsbp?igsh=MW1oNjJpNzV6dHgyag==', label: 'Instagram' },
-    { icon: Youtube, href: '#', label: 'YouTube' }
+    { icon: Instagram, href: 'https://www.instagram.com/industryrelations_iimsbp?igsh=MW1oNjJpNzV6dHgyag==', label: 'Instagram' }
   ];
 
   const quickLinks = [
