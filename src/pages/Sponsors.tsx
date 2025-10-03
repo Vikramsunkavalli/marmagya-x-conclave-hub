@@ -197,10 +197,36 @@ const SponsorsPage = () => {
                   Multiple sponsorship packages available.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="btn-hero">
-                    Sponsorship Packages
+                  <button 
+                    onClick={() => {
+                      console.log('🔍 DEBUG: Sponsorship Packages button clicked!');
+                      const driveUrl = 'https://drive.google.com/file/d/1153YC4hOn5IGTIYhTzLtoLUpf4i9GlyO/view?usp=drivesdk';
+                      console.log('🔍 DEBUG: Opening URL in new tab:', driveUrl);
+                      
+                      try {
+                        const newWindow = window.open(driveUrl, '_blank', 'noopener,noreferrer');
+                        if (newWindow) {
+                          console.log('✅ DEBUG: New window opened successfully');
+                        } else {
+                          console.log('❌ DEBUG: Popup blocked - please allow popups for this site');
+                          alert('Popup blocked! Please allow popups for this site to view the sponsorship packages.');
+                        }
+                      } catch (error) {
+                        console.error('❌ DEBUG: Error opening window:', error);
+                        alert('Error opening link: ' + error.message);
+                      }
+                    }}
+                    className="btn-hero"
+                  >
+                    📋 Sponsorship Packages
                   </button>
-                  <button className="btn-primary">
+                  <button 
+                    onClick={() => {
+                      // Navigate to contact page
+                      window.location.href = '/contact';
+                    }}
+                    className="btn-primary"
+                  >
                     Contact Us
                   </button>
                 </div>

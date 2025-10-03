@@ -121,6 +121,7 @@ const Contact = () => {
                   <p className="text-[hsl(var(--muted-foreground))]">industry@iimsambalpur.ac.in</p>
                 </div>
               </div>
+
             </div>
           </div>
 
